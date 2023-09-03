@@ -11,12 +11,12 @@ dbGetQuery(conn, "SELECT SUM(HARVESTED_AREA)
 
 #Problem 10
 #Rank the crop types harvested in Saskatchewan in the year 2000 by their average yield. Which crop performed best?
-dbGetQuery(conn, "SELECT CROP_TYPE, GEO, HARVESTED_AREA, AVG_YIELD 
-    FROM CROP_DATA 
-    WHERE YEAR=2000 AND 
-          GEO='Saskatchewan'
-    ORDER BY AVG_YIELD
-   ")      
+dbGetQuery(conn,"SELECT CROP_TYPE AS CROP_RANK,  
+            AVG_YIELD AS AVG_YIELD_2000 
+    FROM CROP_DATA
+    WHERE YEAR = 2000 AND
+    GEO = 'Saskatchewan'
+    ORDER BY AVG_YIELD_2000 DESC LIMIT 10")    
 
  #Problem 12: Use a subquery to determine how much wheat was harvested in Canada in the most recent year of the data.
  dbGetQuery(conn, "SELECT SUM(HARVESTED_AREA) AS TOTAL_WHEAT
